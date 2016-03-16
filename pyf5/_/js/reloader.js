@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     if (window._F5 || window.frameElement) return;
 
     /*! jQuery v1.6.3 http://jquery.com/ | http://jquery.org/license */
@@ -332,7 +332,19 @@
         $.getScript(url)
             .fail(function () {
                 if (retryCount >= MAX_RETRY) {
-                    alert('和[F5]失去联系，停止自动刷新');
+                	if(typeof Essage == "object"){
+						var message = {
+							message: '和[F5]失去联系，停止自动刷新',
+							// add class `essage-success` to the container
+							// by default, there're 4 status: normal, warning, success, error
+							status: 'error',
+							// the placement can be `top` or `bottom`, by default is `top`
+							placement: 'top'
+						};
+                		Essage.show(message);
+                	}else{
+                		alert('和[F5]失去联系，停止自动刷新');
+                	}
                 } else {
                     retryCount += 1;
                     queryChanges();

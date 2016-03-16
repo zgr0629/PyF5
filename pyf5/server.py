@@ -36,7 +36,8 @@ class F5Server(Application):
             'version': VERSION
         }
 
-        Application.__init__(self, handlers, ".*$", None, False, **settings)
+        #Application.__init__(self, handlers, ".*$", None, False, **settings)
+        Application.__init__(self, handlers, **settings)
 
         if self.active_project:
             self.load_project(self.active_project)
